@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -10,7 +11,15 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        options: { presets: ['@babel/env'] },
+        options: {
+          presets: [
+            '@babel/env',
+            '@babel/react',
+            {
+              plugins: ['@babel/plugin-proposal-class-properties'],
+            },
+          ],
+        },
       },
       {
         test: /\.css$/,
@@ -35,5 +44,5 @@ module.exports = {
     hotOnly: true,
     overlay: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()],
 };

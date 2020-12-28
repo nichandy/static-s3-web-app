@@ -4,7 +4,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 py--0">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-0 py--0">
           <div className="container">
             <a href="/" className="navbar-brand">
               Logo
