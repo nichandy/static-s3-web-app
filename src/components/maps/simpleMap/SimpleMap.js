@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Component } from 'react';
 import ReactMapGL from 'react-map-gl';
+import Pin from './Pin';
 
 const TOKEN = process.env.MAPBOX_ACCESS_TOKEN; // Set your mapbox token here
 
@@ -23,11 +24,13 @@ class SimpleMap extends Component {
       <ReactMapGL
         {...this.state.viewport}
         width="100vw"
-        height="100vh"
+        height="80vh"
         mapStyle="mapbox://styles/mapbox/dark-v9"
         onViewportChange={(viewport) => this.setState({ viewport })}
         mapboxApiAccessToken={TOKEN}
-      />
+      >
+        <Pin />
+      </ReactMapGL>
     );
   }
 }

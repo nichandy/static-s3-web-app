@@ -4,6 +4,8 @@ import './App.css';
 import Navbar from './components/layout/Navbar';
 import DraggableMap from './components/maps/draggableMap/DraggableMap';
 import SimpleMap from './components/maps/simpleMap/SimpleMap';
+import CitiesMap from './components/maps/citiesMap/CitiesMap';
+import Pins from './components/maps/common/Pins';
 
 class App extends Component {
   render() {
