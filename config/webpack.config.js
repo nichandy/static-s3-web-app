@@ -24,7 +24,36 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              hmr: true,
+            },
+          },
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              hmr: true,
+            },
+          },
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('sass'),
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
@@ -44,12 +73,13 @@ module.exports = {
     publicPath: 'http://localhost:3000/dist/',
     hotOnly: true,
     overlay: true,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new Dotenv(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './public/index.html',
       filename: './index.html',
     }),
   ],
