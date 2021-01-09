@@ -4,7 +4,28 @@
   "private": true,
   "scripts": {
     "start": "npx babel src/app.js --out-file public/scripts/app.js --watch",
-    "play": "npx babel src/playground/counter_example_2.js --out-file public/scripts/app.js --watch"
+    "play": "npx babel src/playground/counter_example_2.js --out-file public/scripts/app.js --watch",
+    "live": "live-server public",
+    "dev:server": "webpack serve",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "install": "^0.13.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "live-server": "^1.2.1",
+    "webpack": "^5.12.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
   },
   "browserslist": {
     "production": [
@@ -17,17 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "install": "^0.13.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10"
   }
 }
