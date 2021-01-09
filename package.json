@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npx babel src/app.js --out-file public/scripts/app.js --watch",
-    "play": "npx babel src/playground/build_it_visible_component.js --out-file public/scripts/app.js --watch"
+    "play": "npx babel src/playground/counter_example_2.js --out-file public/scripts/app.js --watch"
   },
   "browserslist": {
     "production": [
