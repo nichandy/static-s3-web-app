@@ -1,0 +1,19 @@
+.header {
+  background: $galaxy-black;
+  color: white;
+  margin-bottom: 4.8rem;
+  padding: $md-size 0;
+}
+
+// BEM block element modifier
+.header__title {
+  font-size: 3.2rem;
+  margin: 0;
+}
+
+.header__subtitle {
+  color: $galaxy-purple-light;
+  font-size: $md-size;
+  font-weight: 500;
+  margin: 0;
+}
