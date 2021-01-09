@@ -30,6 +30,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     port: 8080,
-    hotOnly: true,
+    watchContentBase: true,
   },
 };
