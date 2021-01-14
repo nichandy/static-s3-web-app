@@ -1,113 +1,48 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var _react = _interopRequireDefault(require("react"));
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var _AppRouter = _interopRequireDefault(require("./routers/AppRouter"));
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+var _reactRedux = require("react-redux");
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+var _configureStore = _interopRequireDefault(require("./store/configureStore"));
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+var _expenses = require("./actions/expenses");
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+var _filters = require("./actions/filters");
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+var _expenses2 = _interopRequireDefault(require("./selectors/expenses"));
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+require("normalize.css/normalize.css");
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+require("./styles/styles.scss");
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Counter = /*#__PURE__*/function (_React$Component) {
-  _inherits(Counter, _React$Component);
+var store = (0, _configureStore.default)();
+var unsubscribe = store.subscribe(function () {
+  var state = store.getState();
+  var visibleExpenses = (0, _expenses2.default)(state.expenses, state.filters);
+  console.log(visibleExpenses);
+});
+store.dispatch((0, _expenses.addExpense)({
+  description: 'Water Bill',
+  amount: 250,
+  createdAt: Date.now()
+}));
+store.dispatch((0, _expenses.addExpense)({
+  description: 'Gas Bill',
+  amount: 96,
+  createdAt: Date.now() - 120000
+}));
+store.dispatch((0, _filters.setTextFilter)('bill'));
+store.dispatch((0, _filters.setTextFilter)('water'));
 
-  var _super = _createSuper(Counter);
+var jsx = /*#__PURE__*/_react.default.createElement(_reactRedux.Provider, {
+  store: store
+}, /*#__PURE__*/_react.default.createElement(_AppRouter.default, null));
 
-  function Counter(props) {
-    var _this;
-
-    _classCallCheck(this, Counter);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      count: 0
-    };
-    _this.handleAddOne = _this.handleAddOne.bind(_assertThisInitialized(_this));
-    _this.handleMinusOne = _this.handleMinusOne.bind(_assertThisInitialized(_this));
-    _this.handleReset = _this.handleReset.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Counter, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      try {
-        var num = localStorage.getItem('count');
-        var count = parseInt(num, 10);
-
-        if (!isNaN(count)) {
-          this.setState(function () {
-            return {
-              count: count
-            };
-          });
-        }
-      } catch (e) {// Do Nothing
-      }
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      if (prevState.count !== this.state.count) {
-        localStorage.setItem('count', this.state.count);
-      }
-    }
-  }, {
-    key: "handleAddOne",
-    value: function handleAddOne() {
-      this.setState(function (prevState) {
-        return {
-          count: prevState.count + 1
-        };
-      });
-    } // this.setState() is asynchronous so sending a function to this.setState() is preferred
-
-  }, {
-    key: "handleMinusOne",
-    value: function handleMinusOne() {
-      this.setState(function (prevState) {
-        return {
-          count: prevState.count - 1
-        };
-      });
-    }
-  }, {
-    key: "handleReset",
-    value: function handleReset() {
-      this.setState(function () {
-        return {
-          count: 0
-        };
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Count: ", this.state.count), /*#__PURE__*/React.createElement("button", {
-        onClick: this.handleAddOne
-      }, "+1"), /*#__PURE__*/React.createElement("button", {
-        onClick: this.handleMinusOne
-      }, "1"), /*#__PURE__*/React.createElement("button", {
-        onClick: this.handleReset
-      }, "Reset"));
-    }
-  }]);
-
-  return Counter;
-}(React.Component);
-
-ReactDOM.render( /*#__PURE__*/React.createElement(Counter, null), document.getElementById('app'));
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_AppRouter.default, null), document.getElementById('app'));
