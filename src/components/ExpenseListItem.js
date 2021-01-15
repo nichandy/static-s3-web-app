@@ -1,25 +1,17 @@
 // Export a stateless functional component
 // description, amount, createdAt
 import React from 'react';
-import { connect } from 'react-redux';
-import { removeExpense } from '../actions/expenses';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
-const ExpenseListItem = ({ id, description, amount, createdAt, dispatch }) => (
+const ExpenseListItem = ({ id, description, amount, createdAt }) => (
   <tr>
-    <td>{description}</td>
-    <td>{amount}</td>
-    <td>{new Date(createdAt).toString()}</td>
     <td>
-      <button
-        style={{ color: 'red' }}
-        onClick={() => {
-          dispatch(removeExpense({ id }));
-        }}
-      >
-        X
-      </button>
+      <Link to={`/edit/${id}`}>{description}</Link>
     </td>
+    <td>{amount}</td>
+    <td>{moment(createdAt).format('MMM Do YYYY, h:mm:ss a')}</td>
   </tr>
 );
 
-export default connect()(ExpenseListItem);
+export default ExpenseListItem;

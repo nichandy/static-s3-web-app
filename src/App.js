@@ -36,8 +36,8 @@ store.dispatch(
   })
 );
 
-store.dispatch(setTextFilter('bill'));
-store.dispatch(setTextFilter('water'));
+// store.dispatch(setTextFilter('bill'));
+// store.dispatch(setTextFilter('water'));
 
 const jsx = (
   <Provider store={store}>
