@@ -76,9 +76,8 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
             ...expense,
             ...action.updates,
           };
-        } else {
-          return expense;
         }
+        return expense;
       });
     default:
       return state;
@@ -128,8 +127,8 @@ const filtersReducer = (state = filterReducerDefaultState, action) => {
 // January 1st 1970 (unix epock)
 // Timestamp (ms) time zone independent data
 
-const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
-  return expenses
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) =>
+  expenses
     .filter((expense) => {
       const startDateMatch =
         typeof startDate !== 'number' || expense.createdAt >= startDate;
@@ -144,11 +143,11 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     .sort((a, b) => {
       if (sortBy === 'date') {
         return a.createdAt < b.createdAt ? 1 : -1;
-      } else if (sortBy === 'amount') {
+      }
+      if (sortBy === 'amount') {
         return a.amount < b.amount ? 1 : -1;
       }
     });
-};
 
 // Store creation
 const store = createStore(

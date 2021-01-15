@@ -2,11 +2,13 @@
   "name": "web-app-sandbox",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "start": "npx babel src/app.js --out-file public/scripts/app.js --watch",
     "play": "webpack serve --entry ./src/playground/hoc.js",
     "dev:server": "webpack serve",
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -31,6 +33,7 @@
     "autoprefixer": "^10.2.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
+    "jest": "^26.6.3",
     "live-server": "^1.2.1",
     "postcss": "^8.2.3",
     "postcss-loader": "^4.1.0",

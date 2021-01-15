@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from '../components/Dashboard';
 import AddExpense from '../components/AddExpense';
 import EditExpense from '../components/EditExpense';
