@@ -8,7 +8,6 @@
     "prod": "webpack serve --config webpack.config.js",
     "build:prod": "webpack --config webpack.prod.js",
     "play": "webpack serve --entry ./src/playground/hoc.js",
-    "dev:server": "webpack serve",
     "test": "jest --config=jest.config.json",
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod"
@@ -18,6 +17,7 @@
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
+    "numeral": "^2.0.6",
     "react": "^17.0.1",
     "react-dates": "^21.8.0",
     "react-dom": "^17.0.1",
