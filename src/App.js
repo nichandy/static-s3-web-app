@@ -10,6 +10,10 @@ import './styles/styles.scss';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+}
+
 const store = configureStore();
 
 const unsubscribe = store.subscribe(() => {

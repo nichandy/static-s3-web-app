@@ -8,6 +8,7 @@ import {
   setEndDate,
 } from '../actions/filters';
 import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 
 export class ExpenseListFilters extends Component {
