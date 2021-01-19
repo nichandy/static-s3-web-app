@@ -10,7 +10,8 @@
     "build": "webpack --config webpack.prod.js",
     "play": "webpack serve --entry ./src/playground/hoc.js",
     "dev:server": "webpack serve",
-    "test": "jest --config=jest.config.json"
+    "test": "jest --config=jest.config.json",
+    "server": "node server/server.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
