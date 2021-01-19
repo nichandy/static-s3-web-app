@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "start": "webpack serve --config webpack.dev.js",
-    "dev:start": "webpack serve --config webpack.config.js",
-    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack serve --config webpack.dev.js",
+    "prod": "webpack serve --config webpack.config.js",
+    "build:prod": "webpack --config webpack.prod.js",
     "play": "webpack serve --entry ./src/playground/hoc.js",
     "dev:server": "webpack serve",
     "test": "jest --config=jest.config.json",
-    "server": "node server/server.js"
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn build build:prod"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
