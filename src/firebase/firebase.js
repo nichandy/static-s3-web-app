@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 console.log('connecting to firebase...');
-console.log(proccess.env);
+// console.log(proccess.env);
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -13,7 +13,7 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
-console.log(firebaseConfig);
+//console.log(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
