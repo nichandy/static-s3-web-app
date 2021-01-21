@@ -13,7 +13,9 @@ export const ExpenseList = (props) => {
             <th>Amount</th>
           </tr>
           {props.expenses.length === 0 ? (
-            <p>No Expenses</p>
+            <tr>
+              <td>No Expenses</td>
+            </tr>
           ) : (
             props.expenses.map((expense) => {
               return <ExpenseListItem key={expense.id} {...expense} />;

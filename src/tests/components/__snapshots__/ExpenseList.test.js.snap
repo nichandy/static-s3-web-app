@@ -53,9 +53,11 @@ exports[`should render ExpenseList with no expenses 1`] = `
           Amount
         </th>
       </tr>
-      <p>
-        No Expenses
-      </p>
+      <tr>
+        <td>
+          No Expenses
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
