@@ -3,7 +3,14 @@ const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let env = process.env.NODE_ENV;
-env = env || 'test' || 'development';
+env = env || 'development';
+if (env === 'undefined') {
+  console.log(`Development: ${env}`);
+} else if (env == 'test') {
+  console.log(`Test: ${env}`);
+} else {
+  console.log(`Production: ${env}`);
+}
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
